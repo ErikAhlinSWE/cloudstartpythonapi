@@ -2,4 +2,5 @@ python -m venv env
 STARTA OM TERMINAL = (env) alt .\env\Scripts\Activate.ps1
 python -m pip install flask_sqlalchemy
 python -m pip install flask_migrate
+python -m pip install mysql-connector-python
 python -m pip freeze > requirements.txt
