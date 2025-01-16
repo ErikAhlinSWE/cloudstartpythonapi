@@ -6,7 +6,7 @@ class Config:
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:Hejsan123@mysql/pythoncrud'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:hejsan123@mysqlserver1/pythoncrud'
     #SQLALCHEMY_DATABASE_URI = os.getenv('CONNECTIONSTRING')
 
 class DevelopmentConfig(Config):

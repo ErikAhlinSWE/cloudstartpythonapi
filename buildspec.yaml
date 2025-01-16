@@ -17,11 +17,8 @@ version: 0.2
 
         
 phases:
-  install:
-    commands:
   build:
     commands:
         - docker build -t git.systementor.se/ahlin.erik/cloudstartpythonapi250115 .
         - docker login -u ahlin.erik -p yacloud1 https://git.systementor.se           
         - docker push git.systementor.se/ahlin.erik/cloudstartpythonapi250115
-        
