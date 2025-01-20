@@ -32,25 +32,6 @@ db.app = app
 db.init_app(app)
 migrate = Migrate(app,db)
 
-#@app.route("/api/stats", methods=['GET'])
-#def get_stats():
-#    try:
-#        # Get total number of games
-#        totalGames = Game.query.count()
-#        
-#        # Get number of wins (where Winner = 'player')
-#        wins = Game.query.filter_by(Winner='player').count()
-#
-#        stats = {
-#            'totalGames': totalGames,
-#            'wins': wins
-#        }
-#
-#        return jsonify(stats), HTTPStatus.OK
-#
-#    except Exception as e:
-#        return jsonify({'error': str(e)}), HTTPStatus.INTERNAL_SERVER_ERROR
-
 @app.route("/api/stats", methods=['GET'])
 def get_stats():
     try:
@@ -58,7 +39,7 @@ def get_stats():
         totalGames = Game.query.count()
         
         # Get number of wins (where Winner = 'player')
-        wins = Game.query.filter_by(Winner='player').count()
+        wins = Game.query.filter_by(Winner = 'You').count()
 
         stats = {
             'totalGames': totalGames,
