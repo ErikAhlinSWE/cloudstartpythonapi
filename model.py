@@ -14,7 +14,6 @@ class Customer(db.Model):
     
 class Game(db.Model):
     __tablename__ = 'games'
-
     Id = db.Column(db.Integer, primary_key=True)
     CreatedAt = db.Column(db.DateTime, default=datetime.now(timezone.utc))
     Winner = db.Column(db.String(50))
