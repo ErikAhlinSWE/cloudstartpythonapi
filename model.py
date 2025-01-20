@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timezone
 import random
 from flask_sqlalchemy import SQLAlchemy
 
@@ -16,7 +16,7 @@ class Game(db.Model):
     __tablename__ = 'games'
 
     Id = db.Column(db.Integer, primary_key=True)
-    CreatedAt = db.Column(db.DateTime, default=datetime.utcnow)
+    CreatedAt = db.Column(db.DateTime, default=datetime.now(timezone.utc))
     Winner = db.Column(db.String(50))
     YourSelection = db.Column(db.String(50))
     ComputerSelection = db.Column(db.String(50))
