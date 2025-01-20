@@ -1,10 +1,11 @@
 # hej
+from http import HTTPStatus
 from flask import Flask, render_template, request,jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, upgrade
 from random import randint
 from appconfig.config import DevelopmentConfig, ProductionConfig
-from model import db, seedData, Customer
+from model import Game, db, seedData, Customer
 import os
     # - docker build -t git.systementor.se/yacloud/yagolangapi .
     #   - docker login -u yacloud -p yacloud1 https://git.systementor.se
@@ -30,6 +31,26 @@ else:
 db.app = app 
 db.init_app(app)
 migrate = Migrate(app,db)
+
+@app.route("/api/stats", methods=['GET'])
+def get_stats():
+    try:
+        # Get total number of games
+        totalGames = Game.query.count()
+        
+        # Get number of wins (where Winner = 'player')
+        wins = Game.query.filter_by(Winner='player').count()
+
+        stats = {
+            'totalGames': totalGames,
+            'wins': wins
+        }
+
+        return jsonify(stats), HTTPStatus.OK
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), HTTPStatus.INTERNAL_SERVER_ERROR
+
 
 @app.route("/api/customer/<id>")
 def apiCustomer(id):
