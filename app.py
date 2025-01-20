@@ -58,7 +58,7 @@ def get_stats():
         totalGames = Game.query.count()
         
         # Get number of wins (where Winner = 'player')
-        wins = Game.query.filter_by(winner='player').count()
+        wins = Game.query.filter_by(Winner='player').count()
 
         stats = {
             'totalGames': totalGames,
