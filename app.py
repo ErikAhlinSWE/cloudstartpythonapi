@@ -99,11 +99,15 @@ def apiCustomerCreate():
 def apiCustomers():
     lista = []
     for c in Customer.query.all():
-        cdict = { "Id": c.Id, 
-                 "Name":c.Name, 
-                 "City":c.City }
+        cdict = {
+            "Id": c.Id,
+            "Name": c.Name,
+            "City": c.City,
+            "TelephoneCountryCode": c.TelephoneCountryCode,
+            "Telephone": c.Telephone
+        }
         lista.append(cdict)
- 
+    
     return jsonify(lista)
 
 @app.route("/customers")
