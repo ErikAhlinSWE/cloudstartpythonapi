@@ -94,6 +94,12 @@ def apiCustomerCreate():
                   "TelephoneCountryCode":c.TelephoneCountryCode,
                    "Telephone":c.Telephone }), 201
 
+@app.route("/api/customer/<int:id>", methods=["DELETE"])
+def deleteCustomer(id):
+    customer = Customer.query.get_or_404(id)
+    db.session.delete(customer)
+    db.session.commit()
+    return '', 204
 
 @app.route("/api/customer")
 def apiCustomers():
