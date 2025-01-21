@@ -118,7 +118,7 @@ def apiCustomers():
 
 @app.route("/customers")
 def contactpage():
-    s = "<html><head><title>Get lost</title></head><body>"
+    s = "<html><head><title>Get list</title></head><body>"
     for c in Customer.query.all():
         s = s + c.Name + "<br />"
     s = s + "</body></html>"
